@@ -1,7 +1,10 @@
 from functools import partial
 
-from PySide2.QtWidgets import QMainWindow, QToolBar, QFileDialog, QDialog
-from PySide2 import QtMultimedia, QtMultimediaWidgets, QtWidgets,QtCore
+from PyQt5.QtCore import QUrl
+from PyQt5.QtMultimedia import QMediaContent
+from PyQt5.QtWidgets import QMainWindow, QToolBar, QFileDialog, QDialog
+from PyQt5 import QtMultimedia, QtMultimediaWidgets, QtWidgets,QtCore
+
 
 
 class Main_Window(QMainWindow):
@@ -64,7 +67,7 @@ class Main_Window(QMainWindow):
 
 
     def update_buttons(self,state):
-        print(state)
+
         self.act_play.setDisabled(state==QtMultimedia.QMediaPlayer.PlayingState)
         self.act_pause.setDisabled(state == QtMultimedia.QMediaPlayer.PausedState)
         self.act_stop.setDisabled(state == QtMultimedia.QMediaPlayer.StoppedState)
@@ -74,7 +77,8 @@ class Main_Window(QMainWindow):
         file_dialog.setMimeTypeFilters(['video/mp4',"video/mkv","video.avi"])
         movie_dir=QtCore.QStandardPaths.writableLocation(QtCore.QStandardPaths.MoviesLocation)
         file_dialog.setDirectory(movie_dir)
+
         if file_dialog.exec_()==QDialog.Accepted:
             movie=file_dialog.selectedUrls()[0]
-            self.player.setMedia(movie)
+            self.player.setMedia(QMediaContent(movie))
             self.player.play()

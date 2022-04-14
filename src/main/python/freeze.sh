@@ -1,3 +1,5 @@
+!#/bin/bash
+
 source /home/princeg/Bureau/ProjetPythonQT/ProjetPyside/env/bin/activate
 
 

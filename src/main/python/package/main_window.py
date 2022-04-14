@@ -1,5 +1,5 @@
 from functools import partial
-
+import torchvision
 from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaContent
 from PyQt5.QtWidgets import QMainWindow, QToolBar, QFileDialog, QDialog
